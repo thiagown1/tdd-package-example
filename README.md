@@ -1,3 +1,4 @@
 # PackageExample
 
-A description of this package.
+This contains a example of a package, just to test how packages works.
+# tdd-package-example
