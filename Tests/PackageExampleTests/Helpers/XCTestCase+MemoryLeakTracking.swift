@@ -1,9 +1,8 @@
 //
 //  XCTestCase+MemoryLeakTracking.swift
-//  EssentialFeedTests
 //
-//  Created by Christophe Bugnon on 06/05/2019.
-//  Copyright © 2019 Christophe Bugnon. All rights reserved.
+//
+//  Created by Thiago  Wlasenko Nicolau on 23/10/22.
 //
 
 import XCTest

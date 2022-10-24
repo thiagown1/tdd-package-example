@@ -1,13 +1,12 @@
 //
 //  URLSessionHTTPClientTests.swift
-//  EssentialFeedTests
 //
-//  Created by Christophe Bugnon on 03/05/2019.
-//  Copyright © 2019 Christophe Bugnon. All rights reserved.
+//
+//  Created by Thiago  Wlasenko Nicolau on 23/10/22.
 //
 
 import XCTest
-import EssentialFeed
+import PackageExample
 
 class URLSessionHTTPClientTests: XCTestCase {
 
@@ -43,7 +42,7 @@ class URLSessionHTTPClientTests: XCTestCase {
 
         let receivedError = resultErrorFor(data: nil, response: nil, error: requestError)
 
-        XCTAssertEqual(receivedError as NSError?, requestError)
+        XCTAssertEqual((receivedError as? NSError)?.code, requestError.code)
     }
 
     func test_getFromURL_failsOnAllInvalidRepresentationCases() {
@@ -127,26 +126,6 @@ class URLSessionHTTPClientTests: XCTestCase {
         }
     }
 
-
-    private func anyURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-
-    private func anyData() -> Data {
-        return Data(bytes: "any data".utf8)
-    }
-
-    private func anyNSError() -> NSError {
-        return NSError(domain: "any error", code: 0)
-    }
-
-    private func nonHTTPURLResponse() -> URLResponse {
-        return URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
-    }
-
-    private func anyHTTPURLResponse() -> HTTPURLResponse {
-        return HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
-    }
 
     private class URLProtocolStub: URLProtocol {
         private static var stub: Stub?

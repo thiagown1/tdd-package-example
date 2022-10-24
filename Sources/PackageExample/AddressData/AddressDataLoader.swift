@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+public enum LoadAddressDataResult {
+    case success(NSDictionary)
+    case failure(Error)
+}
+
+public protocol AddressDataLoader {
+    func load(completion: @escaping (LoadAddressDataResult) -> Void)
+}

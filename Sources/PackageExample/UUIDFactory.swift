@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+public protocol UUIDFactory {
+    var uuidString: String { get }
+}
+
+extension UUID: UUIDFactory { }

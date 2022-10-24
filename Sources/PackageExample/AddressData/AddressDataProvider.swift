@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import AppKit
 
-internal class AddressDataManager: AddressDataLoader {
+internal class AddressDataProvider: AddressDataLoader {
     
     let client: HTTPClient
     let url: URL
