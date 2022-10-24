@@ -12,19 +12,19 @@ internal class AddressDataProvider: AddressDataLoader {
     let client: HTTPClient
     let url: URL
     
-    public typealias Result = LoadAddressDataResult
+    internal typealias Result = LoadAddressDataResult
     
-    public enum Error: Swift.Error {
+    internal enum Error: Swift.Error {
         case connectivity
         case invalidData
     }
     
-    public init (url: URL = URL(string: "http://ip-api.com/json?fields=65798143")!, client: HTTPClient) {
+    internal init (url: URL = URL(string: "http://ip-api.com/json?fields=65798143")!, client: HTTPClient) {
         self.url = url
         self.client = client
     }
 
-    public func load(completion: @escaping(Result) -> Void) {
+    internal func load(completion: @escaping(Result) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 

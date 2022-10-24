@@ -7,11 +7,11 @@
 
 import Foundation
 
-public enum LoadAddressDataResult {
+internal enum LoadAddressDataResult {
     case success(NSDictionary)
     case failure(Error)
 }
 
-public protocol AddressDataLoader {
+internal protocol AddressDataLoader {
     func load(completion: @escaping (LoadAddressDataResult) -> Void)
 }

@@ -7,16 +7,16 @@
 
 import Foundation
 
-public class KeyManager {
+internal class KeyManager {
     private let keyGen: KeyGen
     private let fileManager: Storage
     
-    public init(keyGen: KeyGen = UUIDKeyGen(), fileManager: Storage = LocalFileManager()) {
+    internal init(keyGen: KeyGen = UUIDKeyGen(), fileManager: Storage = LocalFileManager()) {
         self.keyGen = keyGen
         self.fileManager = fileManager
     }
     
-    public func writeIfNeeded() -> String {
+    internal func writeIfNeeded() -> String {
     
         guard let data = try? fileManager.read() else {
             let key = self.keyGen.generate()

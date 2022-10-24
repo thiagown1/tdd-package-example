@@ -7,19 +7,19 @@
 
 import Foundation
 
-public protocol KeyGen {
+internal protocol KeyGen {
     func generate() -> String
 }
 
-public class UUIDKeyGen: KeyGen {
+internal class UUIDKeyGen: KeyGen {
     
     let uuidFactory: UUIDFactory
     
-    public init(uuid: UUIDFactory = UUID()) {
+    internal init(uuid: UUIDFactory = UUID()) {
         self.uuidFactory = uuid
     }
     
-    public func generate() -> String {
+    internal func generate() -> String {
         return self.uuidFactory.uuidString
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import PackageExample
+@testable import PackageExample
 
 class URLSessionHTTPClientTests: XCTestCase {
 

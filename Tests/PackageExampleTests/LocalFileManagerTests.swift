@@ -4,7 +4,7 @@
 //
 //  Created by Thiago  Wlasenko Nicolau on 23/10/22.
 //
-import PackageExample
+@testable import PackageExample
 import XCTest
 
 class LocalFileManagerTests: XCTestCase {
@@ -125,7 +125,7 @@ class LocalFileManagerTests: XCTestCase {
         
         var messages: [MessageType] = []
         
-        public var stubbedUrls: [URL]?
+        internal var stubbedUrls: [URL]?
         
         func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL] {
             
@@ -142,7 +142,7 @@ class LocalFileManagerTests: XCTestCase {
         }
         
         var messages: [MessageType] = []
-        public var stubbedString: String?
+        internal var stubbedString: String?
         
         func from(contentsOf url: URL, encoding enc: String.Encoding) -> String? {
             messages.append(.from(url))

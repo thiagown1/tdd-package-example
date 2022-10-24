@@ -2,12 +2,15 @@ public struct PackageExample {
     private var storage = LocalFileManager(localPath: "e")
     private var keyGen = UUIDKeyGen()
     
-    let addressProvider: AddressDataProvider
-
+    private let keyManager: KeyManager
+    internal let addressProvider: AddressDataProvider
+    
     public init() {
-        let keyManager = KeyManager(keyGen: keyGen, fileManager: storage)
+        keyManager = KeyManager(keyGen: keyGen, fileManager: storage)
         addressProvider = AddressDataProvider(client: URLSessionHTTPClient())
-        
+    }
+    
+    public func configure() {
         // TO-DO: Upload info to server.
         print("Generated UUID: \(keyManager.writeIfNeeded())")
         addressProvider.load { result in

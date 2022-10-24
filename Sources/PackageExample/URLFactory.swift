@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol URLFactory {
+internal protocol URLFactory {
     func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]
 }
 

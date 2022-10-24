@@ -5,7 +5,7 @@
 //  Created by Thiago  Wlasenko Nicolau on 24/10/22.
 //
 
-import PackageExample
+@testable import PackageExample
 import XCTest
 
 class StringReaderTests: XCTestCase {

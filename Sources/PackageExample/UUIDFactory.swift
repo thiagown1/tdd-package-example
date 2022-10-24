@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol UUIDFactory {
+internal protocol UUIDFactory {
     var uuidString: String { get }
 }
 

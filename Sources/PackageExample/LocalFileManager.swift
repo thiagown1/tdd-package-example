@@ -7,33 +7,33 @@
 
 import Foundation
 
-public protocol FileSaver {
+internal protocol FileSaver {
     func write(dataString: String) throws
 }
 
-public protocol FileReader {
+internal protocol FileReader {
     func read() throws -> String?
 }
 
-public typealias Storage = FileSaver & FileReader
+internal typealias Storage = FileSaver & FileReader
 
-public class LocalFileManager: Storage {
+internal class LocalFileManager: Storage {
     
     let localPath: String
     let urlFactory: URLFactory
     let stringReader: StringFileReader
     
-    public enum Exceptions: Error, Equatable {
+    internal enum Exceptions: Error, Equatable {
         case noURL
     }
     
-    public init(localPath: String = "", urlFactory: URLFactory = FileManager.default, stringReader: StringFileReader = StringReader()) {
+    internal init(localPath: String = "", urlFactory: URLFactory = FileManager.default, stringReader: StringFileReader = StringReader()) {
         self.localPath = localPath
         self.urlFactory = urlFactory
         self.stringReader = stringReader
     }
     
-    public func write(dataString: String) throws {
+    internal func write(dataString: String) throws {
         guard let firstPath = self.urlFactory.urls(for: .documentDirectory,
                                                    in: .userDomainMask).first else {
             throw Exceptions.noURL
@@ -43,7 +43,7 @@ public class LocalFileManager: Storage {
         stringReader.to(url: path, stringData: dataString)
     }
     
-    public func read() throws -> String? {
+    internal func read() throws -> String? {
         
         guard let firstPath = self.urlFactory.urls(for: .documentDirectory,
                                               in: .userDomainMask).first else {
