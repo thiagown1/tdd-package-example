@@ -9,19 +9,19 @@ public struct PackageExample {
         self.setup()
     }
     
-    internal init(keyGen: UUIDKeyGen, storage: LocalFileManager) {
+    internal init(keyGen: KeyGen, storage: Storage) {
         self.setup(keyGen: keyGen, storage: storage)
     }
     
-    private mutating func setup(keyGen: UUIDKeyGen = UUIDKeyGen(),
-                                storage: LocalFileManager = LocalFileManager(localPath: "e")) {
+    private mutating func setup(keyGen: KeyGen = UUIDKeyGen(),
+                                storage: Storage = CompositionRoot().compose()) {
         self.keyManager = KeyManager(keyGen: keyGen, fileManager: storage)
         self.addressProvider = AddressDataProvider(client: URLSessionHTTPClient())
     }
     
     public func configure() {
         // TO-DO: Upload info to server.
-        print("Generated UUID: \(keyManager?.writeIfNeeded())")
+        print("Generated UUID: \(keyManager?.writeIfNeeded() ?? "")")
         addressProvider?.load { result in
             switch result {
             case .success(let dict):

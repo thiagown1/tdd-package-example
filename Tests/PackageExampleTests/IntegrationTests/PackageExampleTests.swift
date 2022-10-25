@@ -26,19 +26,21 @@ class PackageExampleTests: XCTestCase {
     
     func test_configure_storesKeyGivenNotEmptyStorage() {
         let (sut, stringReaderStubSpy) = makeSUT()
-        stringReaderStubSpy.stubbedString = anyString()
+        stringReaderStubSpy.stubbedString = "ZHN9ha8GDHgr8ex+0CNmmHmacEZj9IBKCPoxwUcMajcVZvJn/Q=="
         
         sut.configure()
         
         XCTAssertEqual(stringReaderStubSpy.messages, [.from])
     }
     
-    
-
     func makeSUT() -> (PackageExample, StringReaderStubSpy) {
         let stringReaderStubSpy = StringReaderStubSpy()
-        let localFileManager = LocalFileManager(stringReader: stringReaderStubSpy)
-        let sut = PackageExample(keyGen: UUIDKeyGen(), storage: localFileManager)
+        let keyGen = UUIDKeyGen()
+        let keyEncryptor = KeyEncryptor()
+        
+        let decorator = CompositionRoot().compose(keyEncryptor: keyEncryptor, stringReader: stringReaderStubSpy)
+        
+        let sut = PackageExample(keyGen: keyGen, storage: decorator)
         
         return (sut, stringReaderStubSpy)
     }
