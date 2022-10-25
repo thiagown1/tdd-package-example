@@ -9,11 +9,11 @@ import Foundation
 import CryptoKit
 
 
-class KeyEncryptor: Encryptor {
+internal class KeyEncryptor: Encryptor {
     
-    let key = SymmetricKey(data: "2tC2H19lkVbQDfakxcrtNMQdd0FloLyw".data(using: .utf8)!)
+    private let key = SymmetricKey(data: "2tC2H19lkVbQDfakxcrtNMQdd0FloLyw".data(using: .utf8)!)
     
-    func encrypt(_ dataString: String) -> String? {
+    internal func encrypt(_ dataString: String) -> String? {
         let data = dataString.data(using: .utf8)!
         
         
@@ -24,7 +24,7 @@ class KeyEncryptor: Encryptor {
         return nil
     }
     
-    func decrypt(_ dataString: String) -> String? {
+    internal func decrypt(_ dataString: String) -> String? {
         
         guard let data = Data(base64Encoded: dataString) else {
             return nil

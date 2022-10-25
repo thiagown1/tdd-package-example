@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Encryptor {
+internal protocol Encryptor {
     func encrypt(_ dataString: String) -> String?
     func decrypt(_ dataString: String) -> String?
 }
